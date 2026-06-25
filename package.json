@@ -1,0 +1,104 @@
+{
+  "name": "env-diff",
+  "displayName": "Env Diff — Compare .env Files Across Environments",
+  "description": "Compare .env files side-by-side. Instantly spot missing, extra, and changed environment variables between dev, staging, and production. Sort .env files. Never deploy with a missing config again.",
+  "version": "0.1.0",
+  "publisher": "takeaseatventure",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devforge/env-diff"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages",
+    "Developer Tools"
+  ],
+  "keywords": [
+    "env",
+    "environment variables",
+    "dotenv",
+    "diff",
+    "compare",
+    "configuration",
+    "deploy",
+    "staging",
+    "production",
+    "env diff",
+    "env file",
+    "config drift",
+    "secrets"
+  ],
+  "icon": "media/icon.png",
+  "activationEvents": [
+    "onCommand:envdiff.compare",
+    "onCommand:envdiff.checkMissing",
+    "onCommand:envdiff.sort",
+    "onCommand:envdiff.compareAll"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "envdiff.compare",
+        "title": "Env Diff: Compare Two .env Files"
+      },
+      {
+        "command": "envdiff.checkMissing",
+        "title": "Env Diff: Check for Missing Variables"
+      },
+      {
+        "command": "envdiff.sort",
+        "title": "Env Diff: Sort .env File"
+      },
+      {
+        "command": "envdiff.compareAll",
+        "title": "Env Diff: Batch Compare All .env Files (Pro)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "envdiff.compare",
+        "key": "ctrl+alt+d",
+        "mac": "cmd+alt+d"
+      },
+      {
+        "command": "envdiff.checkMissing",
+        "key": "ctrl+alt+m",
+        "mac": "cmd+alt+m"
+      },
+      {
+        "command": "envdiff.sort",
+        "key": "ctrl+alt+s",
+        "mac": "cmd+alt+s"
+      }
+    ],
+    "configuration": {
+      "title": "Env Diff",
+      "properties": {
+        "envdiff.ignoreValues": {
+          "type": "boolean",
+          "default": true,
+          "description": "When comparing, only compare keys (ignore different values). Useful for comparing dev vs prod where values legitimately differ."
+        },
+        "envdiff.sortOutput": {
+          "type": "boolean",
+          "default": true,
+          "description": "Sort variables alphabetically in diff output"
+        },
+        "envdiff.highlightChanges": {
+          "type": "boolean",
+          "default": true,
+          "description": "Highlight value differences with arrows in output"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {}
+}
